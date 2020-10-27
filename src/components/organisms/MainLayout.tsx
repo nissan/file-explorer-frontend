@@ -1,5 +1,6 @@
 import React from 'react';
 import { Col, Container, Row } from 'react-bootstrap';
+import FolderTreeView from '../atoms/FolderTreeView';
 import TopRowControls from '../molecules/TopRowControls';
 
 const MainLayout = () => (
@@ -12,7 +13,7 @@ const MainLayout = () => (
         <Row>
             <Col md="2">
                 <div>
-                    This is the left menus
+                <FolderTreeView />
                 </div>
             </Col>
             <Col md="10">
