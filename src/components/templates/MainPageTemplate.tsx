@@ -1,17 +1,29 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
+import { Col, Container, Row } from 'react-bootstrap';
+import FooterLayout from '../organisms/FooterLayout';
+import HeaderLayout from '../organisms/HeaderLayout';
+import MainLayout from '../organisms/MainLayout';
 
-type PageLayoutProps = {
-    headerLayout?: ReactNode,
-    mainLayout: ReactNode,
-    footerLayout?:ReactNode
-}
 
-const PageLayout = ({headerLayout,mainLayout, footerLayout}:PageLayoutProps) => (
-    <div>
-        <header>{headerLayout}</header>
-        <main>{mainLayout}</main>
-        <footer>{footerLayout}</footer>
-    </div>
+const MainPageTemplate = () => (
+    <Container fluid={true}>
+        <Row>
+            <Col>
+                <HeaderLayout />
+            </Col>
+        </Row>
+        <Row>
+            <Col>
+                <MainLayout />
+            </Col>
+        </Row>
+        <Row>
+            <Col>
+                <FooterLayout />
+            </Col>
+        </Row>
+
+    </Container>
 )
 
-export default PageLayout;
+export default MainPageTemplate;
