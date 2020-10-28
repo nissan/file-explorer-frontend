@@ -11,6 +11,8 @@ const TopRowControls = () => (
                 <Col md="2">
                     <UploadFileButton />
                 </Col>
+            </Row>
+            <Row>
                 <Col md="8">
                     <CreateFolderInput />
                 </Col>

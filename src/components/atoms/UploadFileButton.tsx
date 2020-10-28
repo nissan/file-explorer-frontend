@@ -1,8 +1,17 @@
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 
 const UploadFileButton = () => (
-    <Button>Upload File</Button>
+    <>
+        <Form>
+            <Form.Group>
+                <Form.File 
+                id="upLoadFileControl" 
+                label="Upload File" 
+                />
+            </Form.Group>
+        </Form>
+    </>
 )
 
 export default UploadFileButton;
