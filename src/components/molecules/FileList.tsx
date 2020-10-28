@@ -1,47 +1,21 @@
 import React, { useEffect, useState } from 'react';
-
-export const sampleFiles: File[] = [
-    {
-        id: "1",
-        name: "File1",
-        link: "File1"
-    },
-    {
-        id: "2",
-        name: "File2",
-        link: "File2"
-    },
-    {
-        id: "3",
-        name: "File3",
-        link: "File3"
-    }
-]
-
-type File = {
-    id: string;
-    name: string;
-    link: string;
-
-}
+import { File, FileType, sampleFiles } from '../atoms/FileItem';
 
 export const FileList = () => {
     const [files, setFiles] = useState<File[]>([]);
-    const [selectedFile, setSelectedFile] = useState<File>({
-        id: "",
-        name: "",
-        link: ""
-    });
+    const [selectedFolder, setSelectedFolder] = useState<File>()
+    const [selectedFile, setSelectedFile] = useState<File>();
     useEffect(() => {
         async function fetchData() {
             setFiles(sampleFiles);
+            if (files) setSelectedFolder(sampleFiles.filter(file => file.fileType === FileType.folder)[0]);
+            if (selectedFolder) setSelectedFile(sampleFiles.filter(file => file.folderId === selectedFolder.folderId)[0]);
             //     const res = await fetch("https://swapi.co/api/planets/4/");
             //     res
             //         .json()
             //         .then(res => setFiles(res))
             //         .catch(err => setSelectedFile(err));
         }
-
         fetchData();
     });
     return (
@@ -53,7 +27,7 @@ export const FileList = () => {
                         setSelectedFile(file)
                     }
                     }>
-                        {(selectedFile.id === file.id)
+                        {selectedFile && (selectedFile.id === file.id)
                             ? <b>{file.name}</b>
                             :
                             <span>{file.name}</span>
