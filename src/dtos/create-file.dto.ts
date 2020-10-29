@@ -1,4 +1,4 @@
 export type CreateFileDto = {
-    readonly parentFolderId: number;
-}
-
+  readonly originalName: string;
+  readonly parentFolderId: number;
+};

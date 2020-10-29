@@ -2,11 +2,11 @@ import React, { Fragment, useState } from 'react';
 import axios from 'axios';
 import { Alert, Button, Card, Form, ProgressBar } from 'react-bootstrap';
 import { CreateFileDto } from '../../dtos/create-file.dto';
+import { FileEntity } from '../../entities/FileEntity';
 
 const FileUpload = () => {
     const [file, setFile] = useState('');
     const [fileName, setFileName] = useState('Choose File');
-    const [uploadedFile, setUploadedFile] = useState({fileName:"",filePath:""});
     const [message, setMessage] = useState('');
     const [uploadPercentage, setUploadPercentage] = useState(0);
 
@@ -20,8 +20,10 @@ const FileUpload = () => {
         const formData = new FormData();
         formData.append('file', file);
         const createFileDto:CreateFileDto = {
+            originalName: fileName,
             parentFolderId: 1
         }
+        formData.append('originalName', createFileDto.originalName);
         formData.append('parentFolderId', createFileDto.parentFolderId.toString());
 
         try {
@@ -41,11 +43,10 @@ const FileUpload = () => {
                 }
             });
 
-            const { fileName, filePath } = res.data;
+            const { id } = res.data as FileEntity;
 
-            await setUploadedFile({ fileName, filePath });
             await setFile('');
-            await setMessage('File Uploaded');
+            await setMessage(`File Uploaded. Assigned id of ${id}`);
         } catch (err) {
             if (err.response.status === 500) {
                 setMessage(`There was a problem with the server: ${err.response.data.message}`);

@@ -21,13 +21,12 @@ const CreateFolder = () => {
     const onSubmit = async (e: any) => {
         e.preventDefault();
         const createFileDto: CreateFileDto = {
-            //TODO: Modify the DTO or make a CreateFolderDto to handle this case
-            // originalFileName: folderName,
+            originalName: folderName,
             parentFolderId: currentFolder.id,
         }
 
         try {
-            const res = await axios.post('/files/upload', {
+            const res = await axios.post('/files', {
                 headers: {
                     'Content-Type': 'text/json'
                 },
