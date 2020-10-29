@@ -20,12 +20,9 @@ const FileUpload = () => {
         const formData = new FormData();
         formData.append('file', file);
         const createFileDto:CreateFileDto = {
-            originalFileName:fileName,
-            fileName:fileName,
-            fileType: 1,
             parentFolderId: 1
         }
-        formData.append('createFileDto', JSON.stringify(createFileDto));
+        formData.append('parentFolderId', createFileDto.parentFolderId.toString());
 
         try {
             const res = await axios.post('/files/upload', formData, {

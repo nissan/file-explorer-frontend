@@ -21,9 +21,8 @@ const CreateFolder = () => {
     const onSubmit = async (e: any) => {
         e.preventDefault();
         const createFileDto: CreateFileDto = {
-            originalFileName:folderName,
-            fileName: folderName,
-            fileType: FileType.folder,
+            //TODO: Modify the DTO or make a CreateFolderDto to handle this case
+            // originalFileName: folderName,
             parentFolderId: currentFolder.id,
         }
 
