@@ -3,6 +3,7 @@ import axios from 'axios';
 import { Alert, Button, Card, Form, ProgressBar } from 'react-bootstrap';
 import { File, FileType } from '../atoms/FileItem';
 import { CreateFileDto } from '../../dtos/create-file.dto';
+import { FileEntity } from '../../entities/FileEntity';
 
 const CreateFolder = () => {
 
@@ -25,12 +26,16 @@ const CreateFolder = () => {
             parentFolderId: currentFolder.id,
         }
 
+        const formData = new FormData();
+        formData.append('originalName', createFileDto.originalName);
+        formData.append('parentFolderId', createFileDto.parentFolderId.toString());
+
+
         try {
-            const res = await axios.post('/files', {
+            const res = await axios.post('/files', formData, {
                 headers: {
-                    'Content-Type': 'text/json'
+                    'Content-Type': 'tmultipart/form-data'
                 },
-                body: createFileDto,
                 onUploadProgress: (progressEvent: any) => {
                     setUploadPercentage(
                         parseInt(
@@ -43,7 +48,7 @@ const CreateFolder = () => {
                 }
             });
 
-            const { folderName, folderath } = res.data;
+            const { id } = res.data as FileEntity;
 
         } catch (err) {
             if (err.response.status === 500) {
