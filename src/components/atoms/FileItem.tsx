@@ -1,7 +1,10 @@
 import React from 'react';
 
 export enum FileType {
-    csv,geojson,folder,other
+    csv, //= "CSV",
+    geojson, // = "GeoJSON",
+    folder, // = "Folder",
+    other // = "Other"
 }
 
 export const sampleFiles: File[] = [

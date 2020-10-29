@@ -1,17 +1,25 @@
 import React from 'react';
-import { InputGroup, FormControl } from 'react-bootstrap';
+import { InputGroup, FormControl, Card } from 'react-bootstrap';
 
 const CreateFolderInput = () => (
+  <>
     <InputGroup className="mb-3">
-    <InputGroup.Prepend>
-      <InputGroup.Text id="folder-name">Folder Name</InputGroup.Text>
-    </InputGroup.Prepend>
-    <FormControl
-      placeholder="Folder Name"
-      aria-label="Folder Name"
-      aria-describedby="folder-name"
-    />
-  </InputGroup>
+      <Card>
+        <Card.Title>
+          <InputGroup.Prepend>
+            <InputGroup.Text id="folder-name">Folder Name</InputGroup.Text>
+          </InputGroup.Prepend>
+        </Card.Title>
+        <Card.Body>
+          <FormControl
+            placeholder="Folder Name"
+            aria-label="Folder Name"
+            aria-describedby="folder-name" />
+        </Card.Body>
+      </Card>
+
+    </InputGroup>
+  </>
 )
 
 export default CreateFolderInput;

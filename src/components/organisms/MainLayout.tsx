@@ -6,7 +6,8 @@ import { FolderBreadCrumbs, sampleBreadCrumbData } from '../molecules/FolderBrea
 import TopRowControls from '../molecules/TopRowControls';
 
 const MainLayout = () => (
-    <Container fluid={true}>
+    <>
+        <Container fluid={true}>
         <Row>
             <Col>
                 <TopRowControls />
@@ -36,7 +37,7 @@ const MainLayout = () => (
             </Col>
         </Row>
     </Container>
-
+    </>
 )
 
 export default MainLayout;
