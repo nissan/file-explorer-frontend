@@ -1,21 +1,20 @@
 import React from 'react';
-import UploadFileButton from '../atoms/UploadFileButton';
-import CreateFolderButton from '../atoms/CreateFolderButton';
+
 import { Container, Row, Col } from 'react-bootstrap';
-import CreateFolderInput from '../atoms/CreateFolderInput';
+import FileUpload from './FileUpload';
+import CreateFolder from './CreateFolder';
 
 const TopRowControls = () => (
     <>
         <Container fluid={true}>
             <Row>
-                <Col md="2">
-                    <UploadFileButton />
+                <Col md="12">
+                    <FileUpload />
                 </Col>
-                <Col md="8">
-                    <CreateFolderInput />
-                </Col>
-                <Col md="2">
-                    <CreateFolderButton />
+            </Row>
+            <Row>
+                <Col md="12">
+                    <CreateFolder />
                 </Col>
             </Row>
         </Container>
